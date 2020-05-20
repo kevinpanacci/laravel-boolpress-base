@@ -65,7 +65,7 @@ class PostController extends Controller
         if(!$saved) {
             dd('errore di salvataggio');
         }
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post->slug);
     }
 
     public function show($slug)
