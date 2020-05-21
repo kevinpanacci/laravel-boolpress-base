@@ -6,7 +6,7 @@
     </head>
     <body>
         <div>
-            <table class="table">
+            <table>
                 <thead>
                     <th>Titolo</th>
                     <th>Autore</th>
@@ -14,8 +14,15 @@
                 <tbody>
                     @foreach ($posts as $post)
                         <tr>
-                            <td><a href="{{route('posts.show', $post->slug)}}">{{$post->title}}</a></td>
-                            <td><small>Scritto da {{$post->author}}</small></td>
+                            <td> {{$post->title}} </td>
+                            <td><small>Scritto da {{ $post->author }}</small></td>
+                            <td><a href="{{ route('posts.edit', $post->id) }}">Modifica</a></td>
+                            <td><a href="{{ route('posts.show', $post->slug) }}">Visualizza</a></td>
+                            <td><form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit">Elimina</button>
+                            </form> </td>
                         </tr>
                     @endforeach
                 </tbody>
