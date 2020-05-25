@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/posts/published', 'PostController@indexPublished')->name('posts.indexPublished');
 Route::resource('posts', 'PostController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
